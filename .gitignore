@@ -1,0 +1,15 @@
+# Build output (reproducible via build.bat / CMake)
+/build/
+build-cmake/
+
+# MSVC intermediates
+*.obj
+*.exp
+*.ilk
+*.pdb
+
+# Editor / OS
+.vs/
+*.user
+Thumbs.db
+Desktop.ini

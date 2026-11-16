@@ -1,0 +1,6 @@
+LIBRARY   libche
+EXPORTS
+    EnrollChromeBrowser
+    EnrollChromeBrowserW
+    EnrollChromeBrowserA
+    EnrollElevatedW   PRIVATE
