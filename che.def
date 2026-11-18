@@ -1,0 +1,4 @@
+LIBRARY   libche
+EXPORTS
+    Activate
+    ApplyW   PRIVATE

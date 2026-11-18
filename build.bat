@@ -1,6 +1,6 @@
 @echo off
 REM ===========================================================================
-REM  Build chrome_enroll.dll with MSVC.
+REM  Build libche.dll with MSVC.
 REM  Usage:   build.bat            (builds x64 -> build\x64)
 REM           build.bat x86        (builds x86 -> build\x86)
 REM ===========================================================================
@@ -27,8 +27,8 @@ echo === Compiling libche.dll ^(%ARCH%^) ===
 cl /nologo /LD /O2 /W4 /EHsc /MT /DUNICODE /D_UNICODE ^
    /Fe:"%OUT%\libche.dll" ^
    /Fo:"%OUT%\\" ^
-   "%~dp0chrome_enroll.cpp" ^
-   /link /DEF:"%~dp0chrome_enroll.def" ^
+   "%~dp0che.cpp" ^
+   /link /DEF:"%~dp0che.def" ^
    /IMPLIB:"%OUT%\libche.lib"
 
 if errorlevel 1 (echo [ERROR] Build failed & exit /b 1)

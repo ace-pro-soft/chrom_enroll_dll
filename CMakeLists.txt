@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(chrome_enroll LANGUAGES CXX)
+project(che LANGUAGES CXX)
 
-# Build the CBCM enrollment DLL.
+# Build libche.dll.
 #
 #   mkdir build && cd build
 #   cmake -A x64 ..            (or -A Win32 for a 32-bit host app)
@@ -9,22 +9,22 @@ project(chrome_enroll LANGUAGES CXX)
 #
 # Output: Release\libche.dll  +  Release\libche.lib
 
-add_library(chrome_enroll SHARED
-    chrome_enroll.cpp
-    chrome_enroll.def
+add_library(che SHARED
+    che.cpp
+    che.def
 )
 
-# Produces libche.dll / libche.lib (the C++ target name is unrelated to this).
-set_target_properties(chrome_enroll PROPERTIES OUTPUT_NAME "libche" PREFIX "")
+# Produces libche.dll / libche.lib (the target name is unrelated to this).
+set_target_properties(che PROPERTIES OUTPUT_NAME "libche" PREFIX "")
 
-target_compile_definitions(chrome_enroll PRIVATE UNICODE _UNICODE CHROMEENROLL_EXPORTS)
-set_target_properties(chrome_enroll PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON)
+target_compile_definitions(che PRIVATE UNICODE _UNICODE CHE_EXPORTS)
+set_target_properties(che PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON)
 
 if(MSVC)
     # Static CRT => the DLL has no VC++ redistributable dependency.
-    set_property(TARGET chrome_enroll PROPERTY
+    set_property(TARGET che PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-    target_compile_options(chrome_enroll PRIVATE /W4)
+    target_compile_options(che PRIVATE /W4)
 endif()
 
-target_link_libraries(chrome_enroll PRIVATE advapi32 shell32)
+target_link_libraries(che PRIVATE advapi32 shell32)
